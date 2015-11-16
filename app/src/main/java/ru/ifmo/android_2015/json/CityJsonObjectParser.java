@@ -1,7 +1,6 @@
 package ru.ifmo.android_2015.json;
 
 import android.support.annotation.Nullable;
-import android.util.JsonReader;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -11,7 +10,6 @@ import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.Arrays;
 
 /**
@@ -22,15 +20,22 @@ public class CityJsonObjectParser implements CityJsonParser {
     @Override
     public void parseCities(InputStream in, @Nullable CityParserCallback callback)
             throws IOException, JSONException {
+        Log.d(LOG_TAG, "parseCities >>> started parsing...");
         String data = read(in);
+        Log.d(LOG_TAG, "parseCities: read full data into buffer");
         JSONArray citiesArray = new JSONArray(data);
+        Log.d(LOG_TAG, "parseCities: parsed buffer into JSONArray");
 
         for (int i = 0; i < citiesArray.length(); i++) {
             JSONObject cityJson = citiesArray.optJSONObject(i);
             if (cityJson != null) {
                 parseCity(cityJson, callback);
             }
+            if ((i + 1) % 1000 == 0) {
+                Log.d(LOG_TAG, "parseCities: parsed " + (i + 1) + " cities");
+            }
         }
+        Log.d(LOG_TAG, "parseCities <<< done");
     }
 
     private String read(InputStream in) throws IOException {
