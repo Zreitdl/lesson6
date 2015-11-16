@@ -34,6 +34,16 @@
             android:text="@string/init_db"
             android:onClick="onButtonClick"
             />
+
+        <Button
+            android:id="@+id/btn_city_list"
+            android:layout_width="match_parent"
+            android:layout_height="?android:listPreferredItemHeight"
+            android:layout_marginTop="20dp"
+            android:text="@string/city_list"
+            android:onClick="onButtonClick"
+            />
+
     </LinearLayout>
 
     <LinearLayout

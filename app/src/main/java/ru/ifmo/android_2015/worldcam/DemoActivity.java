@@ -31,6 +31,7 @@ public class DemoActivity extends Activity {
         findViewById(R.id.btn_json_object).setEnabled(false);
         findViewById(R.id.btn_json_reader).setEnabled(false);
         findViewById(R.id.btn_clean).setEnabled(false);
+        findViewById(R.id.btn_city_list).setEnabled(false);
 
         if (savedInstanceState != null) {
             loadPrefsTask = (LoadPrefsTask) getLastNonConfigurationInstance();
@@ -70,6 +71,7 @@ public class DemoActivity extends Activity {
             findViewById(R.id.btn_init_db).setEnabled(fileIsDownloaded);
             findViewById(R.id.btn_json_object).setEnabled(fileIsDownloaded);
             findViewById(R.id.btn_json_reader).setEnabled(fileIsDownloaded);
+            findViewById(R.id.btn_city_list).setEnabled(prefs.getDbIsReady());
         }
     }
 
@@ -105,6 +107,10 @@ public class DemoActivity extends Activity {
                 startActivity(intent);
                 break;
             }
+
+            case R.id.btn_city_list:
+                startActivity(new Intent(this, SelectCityActivity.class));
+                break;
         }
     }
 

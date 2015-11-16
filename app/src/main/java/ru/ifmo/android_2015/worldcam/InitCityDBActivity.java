@@ -39,6 +39,8 @@ public class InitCityDBActivity extends ProgressTaskActivity {
             }
             File file = new File(appContext.getExternalFilesDir(null), fileName);
             importCitites(appContext, file, this);
+
+            new WorldcamPreferences(appContext).saveDbIsReady(true);
         }
     }
 

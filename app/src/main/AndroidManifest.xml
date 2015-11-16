@@ -27,6 +27,8 @@
 
         <activity android:name="ru.ifmo.android_2015.worldcam.JsonParserActivity"/>
 
+        <activity android:name="ru.ifmo.android_2015.worldcam.SelectCityActivity"/>
+
     </application>
 
 </manifest>

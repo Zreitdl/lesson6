@@ -18,7 +18,7 @@ public final class CityContract {
          *
          * SQLite type: INTEGER PRIMARY KEY
          */
-        String CITY_ID = "city_id";
+        String CITY_ID = "_id";
 
         /**
          * Название города.
@@ -55,12 +55,12 @@ public final class CityContract {
      * Примечеание: этот класс определен как "implements CityColumns" для удобства, чтобы
      *              константы интерфейса оказались в области видимости этого класса.
      */
-    static final class Cities implements CityColumns {
+    public static final class Cities implements CityColumns {
 
         /**
          * Название таблицы городов.
          */
-        static final String TABLE = "cities";
+        public static final String TABLE = "cities";
 
         static final String CREATE_TABLE = "CREATE TABLE " + TABLE
                 + " ("
