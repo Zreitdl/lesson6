@@ -43,25 +43,11 @@ public class CityDBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         Log.d(LOG_TAG, "onCreate: " + CityContract.Cities.CREATE_TABLE);
         db.execSQL(CityContract.Cities.CREATE_TABLE);
-
-        Log.d(LOG_TAG, "onCreate: " + CityContract.Cities.CREATE_IDX_NAME);
-        db.execSQL(CityContract.Cities.CREATE_IDX_NAME);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.d(LOG_TAG, "onUpgrade: oldVersion=" + oldVersion + " newVersion=" + newVersion);
-    }
-
-    public static void dropCityNameIndex(SQLiteDatabase db) {
-        final String sql = "DROP INDEX " + CityContract.Cities.IDX_NAME;
-        Log.d(LOG_TAG, "dropCityNameIndex: " + sql);
-        db.execSQL(sql);
-    }
-
-    public static void createCityNameIndex(SQLiteDatabase db) {
-        Log.d(LOG_TAG, "createCityNameIndex: " + CityContract.Cities.CREATE_IDX_NAME);
-        db.execSQL(CityContract.Cities.CREATE_IDX_NAME);
     }
 
     public void dropDb() {

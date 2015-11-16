@@ -13,7 +13,6 @@ import java.io.InputStream;
 import java.util.zip.GZIPInputStream;
 
 import ru.ifmo.android_2015.json.CityJsonParser;
-import ru.ifmo.android_2015.json.CityJsonReaderParser;
 import ru.ifmo.android_2015.json.CityParserCallback;
 import ru.ifmo.android_2015.util.ObservableInputStream;
 import ru.ifmo.android_2015.util.ProgressCallback;
@@ -67,7 +66,7 @@ public abstract class CityFileImporter implements CityParserCallback {
 
     @Override
     public void onCityParsed(long id, String name, String country, double lat, double lon) {
-        //insertCity(db, id, name, country, lat, lon);
+        insertCity(db, id, name, country, lat, lon);
         importedCount++;
         if (importedCount % 1000 == 0) {
             Log.d(LOG_TAG, "Processed " + importedCount + " cities");
@@ -81,7 +80,7 @@ public abstract class CityFileImporter implements CityParserCallback {
                                double latitude,
                                double longitude) {
         final ContentValues values = new ContentValues();
-        values.put(CityContract.CityColumns._ID, id);
+        values.put(CityContract.CityColumns.CITY_ID, id);
         values.put(CityContract.CityColumns.NAME, name);
         values.put(CityContract.CityColumns.COUNTRY, country);
         values.put(CityContract.CityColumns.LATITUDE, latitude);
@@ -89,7 +88,7 @@ public abstract class CityFileImporter implements CityParserCallback {
 
         long rowId = db.insert(CityContract.Cities.TABLE, null /*nullColumnHack not needed*/, values);
         if (rowId < 0) {
-            Log.w(LOG_TAG, "Failed to insert city: " + values);
+            Log.w(LOG_TAG, "Failed to insert city: id=" + id + " name=" + name);
             return false;
         }
         return true;

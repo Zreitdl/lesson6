@@ -1,7 +1,5 @@
 package ru.ifmo.android_2015.db;
 
-import android.provider.BaseColumns;
-
 /**
  * Определения реляционной модели данных городов.
  */
@@ -13,7 +11,14 @@ public final class CityContract {
      * Из базового интерфейса BaseColumn используется колонка _ID -- ID строки SQLite таблицы,
      * в котором хранится ID города.
      */
-    public interface CityColumns extends BaseColumns {
+    public interface CityColumns {
+
+        /**
+         * ID города, основной ключ
+         *
+         * SQLite type: INTEGER PRIMARY KEY
+         */
+        String CITY_ID = "city_id";
 
         /**
          * Название города.
@@ -57,22 +62,14 @@ public final class CityContract {
          */
         static final String TABLE = "cities";
 
-        /**
-         * Название индекса таблицы городов по названию города.
-         */
-        static final String IDX_NAME = "idx_cities_name";
-
         static final String CREATE_TABLE = "CREATE TABLE " + TABLE
                 + " ("
-                + _ID + " INTEGER PRIMARY KEY, "
-                + NAME + " TEXT NON NULL, "
-                + COUNTRY + " TEXT NON NULL, "
-                + LATITUDE + " REAL NON NULL, "
-                + LONGITUDE + " REAL NON NULL"
+                + CITY_ID + " INTEGER PRIMARY KEY, "
+                + NAME + " TEXT, "
+                + COUNTRY + " TEXT, "
+                + LATITUDE + " REAL, "
+                + LONGITUDE + " REAL"
                 + " )";
-
-        static final String CREATE_IDX_NAME = "CREATE INDEX " + IDX_NAME
-                + " ON " + TABLE + " (" + NAME + ")";
 
     }
 
