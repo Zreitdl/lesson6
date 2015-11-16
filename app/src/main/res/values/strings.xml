@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">World Cam</string>
     <string name="new_task">Ожидание</string>
-    <string name="running">Выполненеие&#8230;</string>
+    <string name="running">Выполнение&#8230;</string>
     <string name="error">Ошибка</string>
     <string name="done">Готово</string>
     <string name="done_sec_format">Готово (%1$.2f сек)</string>
