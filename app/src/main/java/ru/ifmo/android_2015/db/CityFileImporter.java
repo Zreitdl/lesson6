@@ -105,10 +105,10 @@ public abstract class CityFileImporter implements CityParserCallback {
         statement.bindString(3, country);
         statement.bindDouble(4, latitude);
         statement.bindDouble(5, longitude);
-        if (statement.executeInsert() < 0) {
-            Log.w(LOG_TAG, "Failed to insert city: id=" + id + " name=" + name);
-            return false;
-        }
+            if (statement.executeInsert() < 0) {
+                Log.w(LOG_TAG, "Failed to insert city: id=" + id + " name=" + name);
+                return false;
+            }
         return true;
     }
 
